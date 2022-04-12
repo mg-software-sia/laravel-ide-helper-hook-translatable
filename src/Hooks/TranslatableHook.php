@@ -37,7 +37,7 @@ class TranslatableHook implements ModelHookInterface
         /** @var Config $config */
         $config = $command->getLaravel()->make(Config::class);
 
-        $customTypes = $config->get("ide-helper.custom_db_types.{$platformName}", []);
+        $customTypes = $config::get("ide-helper.custom_db_types.{$platformName}", []);
         foreach ($customTypes as $yourTypeName => $doctrineTypeName) {
             $databasePlatform->registerDoctrineTypeMapping($yourTypeName, $doctrineTypeName);
         }
